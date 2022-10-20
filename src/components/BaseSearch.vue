@@ -14,7 +14,7 @@ export default {
     },
     methods:{
         update(value){
-            alert(value)
+            this.$emit('update',value)
         }
     },
     props: {

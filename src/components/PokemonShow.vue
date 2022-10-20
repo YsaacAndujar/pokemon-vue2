@@ -12,35 +12,13 @@
 <script>
 import BaseTypeBadge from './BaseTypeBadge.vue';
     export default {
-    data() {
-        return {
-            pokemon: {
-                order: 1,
-                name: "snorlax",
-                sprites: {
-                    front_default: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/143.png"
-                },
-                types: [
-                    {
-                        type: {
-                            name: "water"
-                        }
-                    },
-                    {
-                        type: {
-                            name: "fighting"
-                        }
-                    },
-                    {
-                        type: {
-                            name: "dragon"
-                        }
-                    }
-                ]
-            }
-        };
-    },
     
+    props: {
+        pokemon: {
+            type: Object,
+            default: {}
+        },
+    },
     components: { BaseTypeBadge },
     filters:{
         upper(value){
