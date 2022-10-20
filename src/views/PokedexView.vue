@@ -1,7 +1,7 @@
 <template>
     <div>
         <BaseSearch v-on:update="update" @click="search" ></BaseSearch>
-        <PokemonShow :pokemon="pokemon"></PokemonShow>
+        <PokemonShow></PokemonShow>
     </div> 
 </template>
 
@@ -12,7 +12,6 @@ export default {
     data(){
         return {
             value: '',
-            pokemon: {}
         }
     },
     components: { PokemonShow },
@@ -22,7 +21,6 @@ export default {
         },
         search(){
             pokemonService.getPokedex(this.value).then((response)=>{
-                this.pokemon = response.data
                 console.log(this.pokemon);
             })
         }
