@@ -1,12 +1,22 @@
 <template>
     <div class="container">
-        <BaseInput :placeholder="inputHolder"></BaseInput>
-        <BaseButton>{{buttonHolder}}</BaseButton>
+        <BaseInput :placeholder="inputHolder" v-on:update="update"></BaseInput>
+        <BaseButton v-on="$listeners">{{buttonHolder}}</BaseButton>
     </div>
 </template>
 
 <script>
 export default {
+    data(){
+        return {
+            value: ''
+        }
+    },
+    methods:{
+        update(value){
+            alert(value)
+        }
+    },
     props: {
         inputHolder: {
             type: String,
@@ -17,6 +27,7 @@ export default {
             default: 'Search'
         },
     },
+    
 }
 </script>
 

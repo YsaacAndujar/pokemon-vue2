@@ -1,6 +1,6 @@
 <template>
     <div>
-        <BaseSearch></BaseSearch>{{k}}
+        <BaseSearch v-on:update="update" @click="btnClick"></BaseSearch>
         <PokemonShow></PokemonShow>
     </div> 
 </template>
@@ -8,7 +8,15 @@
 <script>
 import PokemonShow from '@/components/PokemonShow.vue';
 export default {
-    components: { PokemonShow }
+    components: { PokemonShow },
+    methods:{
+        update(value){
+            alert(value)
+        },
+        btnClick(){
+            alert('a')
+        }
+    },
 }
 </script>
 

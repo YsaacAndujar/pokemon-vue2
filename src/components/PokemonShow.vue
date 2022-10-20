@@ -40,6 +40,7 @@ import BaseTypeBadge from './BaseTypeBadge.vue';
             }
         };
     },
+    
     components: { BaseTypeBadge },
     filters:{
         upper(value){

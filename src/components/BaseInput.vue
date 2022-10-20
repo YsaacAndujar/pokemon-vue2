@@ -1,5 +1,5 @@
 <template>
-    <input type="text" :placeholder="placeholder">
+    <input type="text" @input="update" :placeholder="placeholder">
 </template>
 
 <script>
@@ -9,6 +9,11 @@
                 type: String
             },
         },
+        methods:{
+            update(event){
+                this.$emit('update',event.target.value)
+            }
+        }
     }
 </script>
 
