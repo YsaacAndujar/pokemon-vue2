@@ -1,5 +1,8 @@
 <template>
-    <button>g</button>
+    <button>
+        <slot>
+        </slot>
+    </button>
 </template>
 
 <script>
@@ -10,11 +13,12 @@
 
 <style scoped>
 button{
+    margin:2px;
+    height: 40px;
     cursor: pointer;
     outline: 0;
     color: #fff;
-    background-color: #0d6efd;
-    border-color: #0d6efd;
+    background-color: var(--red);
     display: inline-block;
     font-weight: 400;
     line-height: 1.5;
@@ -26,9 +30,8 @@ button{
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
                 
 }
-.button:hover{
+button:hover{
     color: #fff;
-    background-color: #0b5ed7;
-    border-color: #0a58ca;
+    background-color: var(--red-hover);
 }
 </style>

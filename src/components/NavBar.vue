@@ -35,7 +35,7 @@
 }
 
 .topnav a.active {
-  background-color: #ee1515;
+  background-color: var(--red);
   color: white;
 }
 </style>

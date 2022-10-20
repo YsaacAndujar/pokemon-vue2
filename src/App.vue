@@ -3,8 +3,6 @@
     <NavBar></NavBar>
     <div class="router-view-container">
       <router-view/>
-
-
     </div>
   </div>
 </template>
@@ -18,6 +16,10 @@ import NavBar from './components/NavBar.vue';
 </script>
 
 <style>
+:root {
+  --red: hsl(0, 86%, 51%);
+  --red-hover:hsl(0, 86%, 68%);
+}
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;

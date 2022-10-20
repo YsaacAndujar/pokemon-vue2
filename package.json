@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
+    "lodash": "^4.17.21",
+    "sass": "^1.55.0",
     "vue": "^2.6.14",
     "vue-router": "^3.5.1",
     "vuex": "^3.6.2"
@@ -23,6 +25,7 @@
     "@vue/vue2-jest": "^27.0.0-alpha.2",
     "babel-jest": "^27.0.6",
     "jest": "^27.0.5",
+    "sass-loader": "^13.1.0",
     "vue-template-compiler": "^2.6.14"
   }
 }

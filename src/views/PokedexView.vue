@@ -1,15 +1,17 @@
 <template>
     <div>
-
-    </div>
+        <BaseSearch></BaseSearch>{{k}}
+        <PokemonShow></PokemonShow>
+    </div> 
 </template>
 
 <script>
-    export default {
-        
-    }
+import PokemonShow from '@/components/PokemonShow.vue';
+export default {
+    components: { PokemonShow }
+}
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 
 </style>
