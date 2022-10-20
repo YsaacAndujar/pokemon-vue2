@@ -1,6 +1,8 @@
 <template>
     <div class="topnav">
         <router-link :to="{name:'home'}">Home</router-link>
+        <router-link :to="{name:'pokedex'}">Pokedex</router-link>
+        <router-link :to="{name:'game'}">Game</router-link>
     </div>
 </template>
 
@@ -33,7 +35,7 @@
 }
 
 .topnav a.active {
-  background-color: #04AA6D;
+  background-color: #ee1515;
   color: white;
 }
 </style>
