@@ -1,15 +1,22 @@
 <template>
     <div class="container">
-        <BaseButton typeClass="green">snorlaaaaaaaaaa</BaseButton>
-        <BaseButton typeClass="gray">snorla</BaseButton>
-        <BaseButton>snorla</BaseButton>
-        <BaseButton>snorla</BaseButton>
+        <BaseButton 
+            v-for="(option, index) in options" 
+            :key="index"
+            v-on="$listeners"
+            :typeClass="option.type"
+        >{{option.name}}</BaseButton>
     </div>
 </template>
 
 <script>
     export default {
-        
+        props: {
+            options: {
+                type: Array,
+                required: true
+            },
+        },
     }
 </script>
 

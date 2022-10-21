@@ -1,17 +1,26 @@
 <template>
     <div class="container">
         <img class="pokemon-show" 
-            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
-            
+            :src="url"
+            v-if="show"
         >
-        <img class="pokemon-shadow" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png">
+        <img class="pokemon-shadow" :src="url">
         <img class="background" src="@/assets/images/whosthatpokemon.webp">
     </div>
 </template>
 
 <script>
     export default {
-        
+        props: {
+            show: {
+                type: Boolean,
+                default: false
+            },
+            url: {
+                type:String,
+                required: true
+            },
+        },
     }
 </script>
 

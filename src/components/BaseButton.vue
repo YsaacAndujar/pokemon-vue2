@@ -21,7 +21,6 @@ button{
     margin:2px;
     cursor: default;
     height: 40px;
-    cursor: pointer;
     outline: 0;
     color: #fff;
     display: inline-block;
@@ -43,7 +42,7 @@ button:hover{
 }
 .red:hover{
     background-color: var(--red-hover);
-    cursor:default;
+    cursor:pointer;
 }
 .green{
     background-color: rgb(0, 214, 0);
