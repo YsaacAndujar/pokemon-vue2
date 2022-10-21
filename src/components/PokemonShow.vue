@@ -10,11 +10,11 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 import BaseTypeBadge from './BaseTypeBadge.vue';
     export default {
 
-    computed: mapState(['pokemon']),
+    computed: mapGetters(['pokemon']),
     components: { BaseTypeBadge },
     filters:{
         upper(value){

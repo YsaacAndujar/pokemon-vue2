@@ -1,28 +1,25 @@
 <template>
     <div>
         <BaseSearch v-on:update="update" @click="search" ></BaseSearch>
-        <PokemonShow></PokemonShow>
+        <PokemonShow v-if="this.$store.getters.pokemon"></PokemonShow>
     </div> 
 </template>
 
 <script>
 import PokemonShow from '@/components/PokemonShow.vue';
-import pokemonService from '@/services/pokemonService.js'
 export default {
     data(){
         return {
-            value: '',
+            name: '',
         }
     },
     components: { PokemonShow },
     methods:{
-        update(value){
-            this.value = value
+        update(name){
+            this.name = name
         },
         search(){
-            pokemonService.getPokedex(this.value).then((response)=>{
-                console.log(this.pokemon);
-            })
+            this.$store.dispatch('getPokedex', this.name)
         }
     },
 }
