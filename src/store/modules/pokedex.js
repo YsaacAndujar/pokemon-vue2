@@ -13,16 +13,23 @@ export const getters = {
 }
 export const mutations = {
     SET_POKEDEX(state, pokemon){
-        console.log(pokemon);
         state.pokemon = pokemon
     }
 }
 export const actions = {
-    getPokedex({commit}, name){
-      pokemonService.getPokedex(name).then(response => {
-        commit('SET_POKEDEX', response.data)
-      }).catch(error =>{
-        console.log(error);
-      })
+    async getPokedex({commit, dispatch}, name){
+      let data = (await pokemonService.getPokedex(name)).data
+      commit('SET_POKEDEX', data)
+      // .then(response => {
+      //   commit('SET_POKEDEX', response.data)
+      // })
+      // .catch(error =>{
+      //   const notification = {
+      //     type: 'error',
+      //     message: 'There was a problem fetching pokemon: ' + error.message 
+      //   }
+      //   dispatch('notification/add', notification, { root: true })
+      //   console.log(error);
+      // })
     }
 }

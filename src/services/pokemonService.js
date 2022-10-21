@@ -1,5 +1,4 @@
 import axios from 'axios'
-
 const api = axios.create({
     baseURL: 'https://pokeapi.co/api/v2/pokemon',
     withCredentials: false,
@@ -11,7 +10,6 @@ const api = axios.create({
 
 export default {
     async getPokedex(name){
-        
         return api.get(`/${name}`)
     }
 }
