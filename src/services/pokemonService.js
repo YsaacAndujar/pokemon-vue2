@@ -11,6 +11,7 @@ const api = axios.create({
 
 export default {
     async getPokedex(name){
+        
         return api.get(`/${name}`)
     }
 }

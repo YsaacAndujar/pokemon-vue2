@@ -1,7 +1,7 @@
 <template>
     <div>
         <BaseSearch v-on:update="update" @click="search" ></BaseSearch>
-        <PokemonShow v-if="this.$store.getters.pokemon"></PokemonShow>
+        <PokemonShow v-if="this.$store.getters['pokedex/pokemon']"></PokemonShow>
     </div> 
 </template>
 
@@ -10,7 +10,7 @@ import PokemonShow from '@/components/PokemonShow.vue';
 export default {
     data(){
         return {
-            name: '',
+            name,
         }
     },
     components: { PokemonShow },
@@ -19,7 +19,7 @@ export default {
             this.name = name
         },
         search(){
-            this.$store.dispatch('getPokedex', this.name)
+            this.$store.dispatch('pokedex/getPokedex', this.name)
         }
     },
 }

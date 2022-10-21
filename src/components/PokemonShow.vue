@@ -10,11 +10,14 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex';
 import BaseTypeBadge from './BaseTypeBadge.vue';
     export default {
 
-    computed: mapGetters(['pokemon']),
+    computed: {
+        pokemon(){
+            return this.$store.getters['pokedex/pokemon']
+        }
+    },
     components: { BaseTypeBadge },
     filters:{
         upper(value){
