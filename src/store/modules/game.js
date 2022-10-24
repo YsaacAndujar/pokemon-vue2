@@ -29,15 +29,21 @@ export const mutations = {
 }
 export const actions = {
     async newGame({commit}, numbers){
-        const pokemons = await Promise.all(
+        const options = await Promise.all(
             numbers.map(async (n)=>{
                 return (await pokemonService.getPokedex(n)).data
             })
         )
-        const n = Math.floor(Math.random() * pokemons.length)
-        commit('SET_POKEMON', pokemons[n])
-        commit('SET_OPTIONS', pokemons)
-        
-        return pokemons
+        const n = Math.floor(Math.random() * options.length)
+        commit('SET_POKEMON', options[n])
+        commit('SET_OPTIONS', options)
+        return options
+    },
+    async setAnswer({commit}, answer){
+        console.log(state.pokemon);
+        commit('SET_OPTIONS', state.options.map((e)=>{
+            e.type = state.pokemon != e ? 'gray' : 'green' 
+            return e
+        }))
     }
 }

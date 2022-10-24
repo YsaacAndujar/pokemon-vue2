@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <PokemonWTP :show="this.show" :url="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png'"/>
+        <PokemonWTP :show="this.show" :url="pokemon.sprites.front_default" v-if="pokemon"/>
         <PokemonOptions @click="getAnswer" :options="options"/>
     </div>
 </template>
@@ -63,8 +63,8 @@ import store from '@/store/index'
             },
             getAnswer(e){
                 this.show = true
-                console.log(e.target);
-
+                console.log(e.target.id);
+                this.$store.dispatch('game/setAnswer', 1)
             },
 
         }

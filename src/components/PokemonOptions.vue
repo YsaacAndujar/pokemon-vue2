@@ -1,12 +1,12 @@
 <template>
     <div class="container">
         <BaseButton 
-            v-for="option in options"
-            :key="option.id"
-            :id="option.id"
+            v-for="{id, type, name} in options"
+            :key="id"
+            :id="id"
             v-on="$listeners"
-            :typeClass="option.type"
-        >{{option.name}}</BaseButton>
+            :typeClass="type"
+        >{{name.toUpperCase()}}</BaseButton>
     </div>
 </template>
 
