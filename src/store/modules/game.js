@@ -39,11 +39,18 @@ export const actions = {
         commit('SET_OPTIONS', options)
         return options
     },
-    async setAnswer({commit}, answer){
-        console.log(state.pokemon);
-        commit('SET_OPTIONS', state.options.map((e)=>{
-            e.type = state.pokemon != e ? 'gray' : 'green' 
-            return e
-        }))
+    async setAnswer(_, clicked){
+        state.options.map((option)=>{
+            if(option.id != clicked){
+                option.type = 'gray'
+            }else{
+                option.type = 'red'
+            }
+            
+            if(state.pokemon == option){
+                option.type = 'green'
+            }
+            return option
+        })
     }
 }

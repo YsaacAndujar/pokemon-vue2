@@ -18,7 +18,7 @@ export const mutations = {
 }
 export const actions = {
     async getPokedex({commit}, name){
-      let data = (await pokemonService.getPokedex(name)).data
+      let data = (await pokemonService.getPokedex(name.toLowerCase())).data
       commit('SET_POKEDEX', data)
     },
 }

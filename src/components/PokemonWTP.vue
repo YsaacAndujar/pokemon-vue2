@@ -41,10 +41,34 @@
     .pokemon-shadow {
         filter: contrast(0%) brightness(0%);
         z-index: 1;
+        user-select: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
     }
     .background{
         position: absolute;
         width: 100%;
+    }
+}
+@media (max-width: 600px) {
+    .container{
+        .pokemon-show, .pokemon-shadow {
+            top: 70px;
+            left: 40px;
+            width: 160px;
+        }
+    }
+}
+@media (max-width: 450px) {
+    .container{
+        .pokemon-show, .pokemon-shadow {
+            top: 92px;
+            left: 27px;
+            width: 120px;
+        }
     }
 }
 </style>

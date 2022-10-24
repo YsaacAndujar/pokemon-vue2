@@ -50,4 +50,15 @@ button:hover{
 .gray{
     background-color: gray;
 }
+.blue{
+    background-color: gray;
+    cursor:pointer;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    
+}
+.blue:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
 </style>

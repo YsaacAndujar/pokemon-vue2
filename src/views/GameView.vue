@@ -2,6 +2,9 @@
     <div class="container">
         <PokemonWTP :show="this.show" :url="pokemon.sprites.front_default" v-if="pokemon"/>
         <PokemonOptions @click="getAnswer" :options="options"/>
+        <div class="new-game-container">
+            <base-button :typeClass="'blue'" @click="nextPokemon()">NEW POKEMON</base-button>
+        </div>
     </div>
 </template>
 
@@ -32,7 +35,6 @@ import store from '@/store/index'
         beforeRouteEnter(routeTo, routeFrom, next){
             next(gv =>{
                 gv.nextPokemon()
-
             })
             
         },
@@ -41,17 +43,19 @@ import store from '@/store/index'
                 nProgress.start()
                 const numbers = store.getters['game/numbers']
                 const randomList = this.getRandomList(4, numbers)
-                this.$store.dispatch('game/newGame', randomList)
+                this.show = false
+                this.$store.dispatch('game/newGame', randomList).then(
+                    nProgress.done()
+                )
                 .catch(error =>{
                     const notification = {
                     type: 'error',
                     message: 'There was a problem fetching options: ' + error.message
                     }
                     store.dispatch('notification/add', notification, { root: true })
+                    nProgress.done()
                 })
-                nProgress.done()
-
-        },
+            },
             getRandomList(size, list){
                 const newList = []
                 let n
@@ -62,9 +66,10 @@ import store from '@/store/index'
                 return newList
             },
             getAnswer(e){
+                console.log('g');
+
                 this.show = true
-                console.log(e.target.id);
-                this.$store.dispatch('game/setAnswer', 1)
+                this.$store.dispatch('game/setAnswer', e.target.id)
             },
 
         }
@@ -77,5 +82,19 @@ import store from '@/store/index'
     flex-direction: column;
     justify-content: center;
 }
-
+.new-game-container{
+    margin-top: 20px;
+    display: flex;
+    justify-content: right;
+}
+@media (max-width: 600px) {
+    .container{
+        width: 400px;
+    }
+}
+@media (max-width: 450px) {
+    .container{
+        width: 300px;
+    }
+}
 </style>
