@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <PokemonWTP :show="this.show"/>
+        <PokemonWTP :show="this.show" :url="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png'"/>
         <PokemonOptions @click="getAnswer" :options="options"/>
     </div>
 </template>
@@ -29,29 +29,42 @@ import store from '@/store/index'
                 show:false,
             }
         },
-        beforeMount(){
-            nProgress.start()
-            this.nextPokemon()
+        beforeRouteEnter(routeTo, routeFrom, next){
+            next(gv =>{
+                gv.nextPokemon()
+
+            })
+            
         },
         methods:{
-            asyncnextPokemon(){
+            nextPokemon(){
+                nProgress.start()
                 const numbers = store.getters['game/numbers']
-                
-            
-            this.$store.dispatch('pokedex/getPokedex', this.name)
-            .catch(error =>{
-                const message = error.response.status == 404 ? 'Wrong pokemon / Bad internet connection' : error.message
-                const notification = {
-                type: 'error',
-                message: 'There was a problem fetching pokemon: ' + message
-                }
-                this.$store.dispatch('notification/add', notification, { root: true })
-            }).finally( () =>{
+                const randomList = this.getRandomList(4, numbers)
+                this.$store.dispatch('game/newGame', randomList)
+                .catch(error =>{
+                    const notification = {
+                    type: 'error',
+                    message: 'There was a problem fetching options: ' + error.message
+                    }
+                    store.dispatch('notification/add', notification, { root: true })
+                })
                 nProgress.done()
-            })
+
         },
-            getAnswer(){
+            getRandomList(size, list){
+                const newList = []
+                let n
+                for (let i = 0; i < size; i++){
+                    n = Math.floor(Math.random() * list.length)
+                    newList.push(list.splice(n,1)[0])
+                }
+                return newList
+            },
+            getAnswer(e){
                 this.show = true
+                console.log(e.target);
+
             },
 
         }

@@ -4,7 +4,7 @@ export const namespaced = true
 
 export const state = {
     pokemon:null,
-    options:null,
+    options:[],
     numbers: [...Array(899).keys()].slice(1)
 }
 
@@ -28,10 +28,16 @@ export const mutations = {
     }
 }
 export const actions = {
-    async getPokemons({commit}, numbers){
-        let data = numbers.map(async (n)=>{
-            (await pokemonService.getPokedex(n)).data
-        });
-      return data
+    async newGame({commit}, numbers){
+        const pokemons = await Promise.all(
+            numbers.map(async (n)=>{
+                return (await pokemonService.getPokedex(n)).data
+            })
+        )
+        const n = Math.floor(Math.random() * pokemons.length)
+        commit('SET_POKEMON', pokemons[n])
+        commit('SET_OPTIONS', pokemons)
+        
+        return pokemons
     }
 }
